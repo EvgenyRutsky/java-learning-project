@@ -51,7 +51,18 @@ public class Librarian {
 
         }
 
-        Interaction(library);
+        System.out.println("Для просмотра книги введите ее номер по проядку, для выхода в главное меню введите \"0\"");
+
+        scanner = new Scanner(System.in);
+        int bookId = scanner.nextInt();
+
+        if (bookId == 0){
+            Interaction(library);
+        } else {
+            showBookDetails(library,bookId);
+        }
+
+
 
     }
 
@@ -171,6 +182,18 @@ public class Librarian {
             searchHandler(library);
 
         }
+
+        Interaction(library);
+
+    }
+
+    private void showBookDetails (Library library, int bookId) {
+
+        Book detailedBook;
+        detailedBook = library.getBooksList().get(bookId-1);
+        System.out.println("Автор: " + detailedBook.getAuthor() +
+                "\nНазвание книги: " + detailedBook.getBookTitle() +
+                "\nЖанр: " + detailedBook.getGenre());
 
         Interaction(library);
 
